@@ -1,0 +1,153 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  min-height: 100vh;
+  padding: 20px;
+}
+
+.container {
+  max-width: 500px;
+  margin: 0 auto;
+  background: white;
+  border-radius: 20px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+}
+
+h1 {
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  color: white;
+  padding: 25px;
+  text-align: center;
+  font-size: 1.8rem;
+}
+
+.input-section {
+  padding: 25px;
+  display: flex;
+  gap: 10px;
+}
+
+#taskInput {
+  flex: 1;
+  padding: 15px;
+  border: 2px solid #e1e5e9;
+  border-radius: 10px;
+  font-size: 16px;
+  transition: border-color 0.3s;
+}
+
+#taskInput:focus {
+  outline: none;
+  border-color: #667eea;
+}
+
+#addBtn {
+  padding: 15px 25px;
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  color: white;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 600;
+  transition: transform 0.2s;
+}
+
+#addBtn:hover {
+  transform: translateY(-2px);
+}
+
+.stats {
+  padding: 0 25px 20px;
+  color: #666;
+}
+
+#taskList {
+  list-style: none;
+  max-height: 400px;
+  overflow-y: auto;
+}
+
+.task-item {
+  display: flex;
+  align-items: center;
+  padding: 18px 25px;
+  border-bottom: 1px solid #f0f0f0;
+  transition: background 0.2s;
+}
+
+.task-item:hover {
+  background: #f8f9ff;
+}
+
+.task-item.completed {
+  opacity: 0.7;
+}
+
+.task-item.completed .task-text {
+  text-decoration: line-through;
+  color: #999;
+}
+
+.task-checkbox {
+  width: 20px;
+  height: 20px;
+  margin-right: 15px;
+  cursor: pointer;
+}
+
+.task-text {
+  flex: 1;
+  font-size: 16px;
+}
+
+.delete-btn {
+  background: #ff6b6b;
+  color: white;
+  border: none;
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s;
+}
+
+.delete-btn:hover {
+  background: #ff5252;
+}
+
+.clear-all {
+  width: 100%;
+  padding: 18px;
+  background: #ff6b6b;
+  color: white;
+  border: none;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.clear-all:hover {
+  background: #ff5252;
+}
+
+@media (max-width: 480px) {
+  .input-section {
+    flex-direction: column;
+  }
+
+  .task-item {
+    padding: 15px;
+  }
+}
