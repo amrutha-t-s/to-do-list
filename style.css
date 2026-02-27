@@ -327,4 +327,27 @@ h1 {
     width: 45px;
     height: 45px;
   }
+  /* 🔥 DRAG & DROP ANIMATIONS */
+  .task-item {
+    cursor: grab;
+  }
+
+  .task-item:active {
+    cursor: grabbing;
+  }
+
+  .task-item.dragging {
+    opacity: 0.5;
+    transform: rotate(5deg);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3) !important;
+  }
+
+  .task-item.dragging + .task-item {
+    transform: scale(1.02);
+  }
+
+  /* Drop zone glow */
+  #taskList.drag-over {
+    border: 2px dashed #667eea;
+  }
 }
