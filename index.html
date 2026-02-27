@@ -3,27 +3,58 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>To-Do List App</title>
+    <title>Amrutha's To-Do List - Portfolio Project</title>
+    <meta
+      name="description"
+      content="Modern To-Do List app with dark mode, local storage, and smooth animations"
+    />
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
     <div class="container">
-      <h1>My To-Do List</h1>
+      <!-- ✅ PERFECT HEADER WITH DARK MODE TOGGLE -->
+      <div class="header">
+        <h1>✨ My To-Do List</h1>
+        <button
+          id="themeToggle"
+          class="theme-btn"
+          title="Toggle Dark Mode"
+          aria-label="Toggle theme"
+        >
+          🌙
+        </button>
+      </div>
+
+      <!-- ✅ INPUT SECTION -->
       <div class="input-section">
         <input
           type="text"
           id="taskInput"
-          placeholder="Enter a new task..."
+          placeholder="What needs to be done today?"
           maxlength="100"
+          autocomplete="off"
         />
-        <button id="addBtn">Add Task</button>
+        <button id="addBtn" aria-label="Add new task">Add Task</button>
       </div>
+
+      <!-- ✅ STATS SECTION -->
       <div class="stats">
-        <span id="taskCount">0 tasks</span>
+        <span id="taskCount">0 pending tasks</span>
       </div>
-      <ul id="taskList"></ul>
-      <button id="clearBtn" class="clear-all">Clear All Tasks</button>
+
+      <!-- ✅ TASK LIST -->
+      <ul id="taskList" role="list"></ul>
+
+      <!-- ✅ CLEAR BUTTON -->
+      <button
+        id="clearBtn"
+        class="clear-all"
+        aria-label="Clear completed tasks"
+      >
+        Clear Completed
+      </button>
     </div>
+
     <script src="script.js"></script>
   </body>
 </html>

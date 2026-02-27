@@ -6,7 +6,7 @@ const clearBtn = document.getElementById("clearBtn");
 
 let tasks = JSON.parse(localStorage.getItem("tasks")) || [];
 
-// Initialize app
+// Initialize app - SINGLE DOMContentLoaded with DARK MODE
 document.addEventListener("DOMContentLoaded", function () {
   displayTasks();
   updateTaskCount();
@@ -20,6 +20,24 @@ document.addEventListener("DOMContentLoaded", function () {
 
   addBtn.addEventListener("click", addTask);
   clearBtn.addEventListener("click", clearAllTasks);
+
+  // 🔥 DARK MODE - FIXED AND WORKING
+  const themeToggle = document.getElementById("themeToggle");
+  if (themeToggle) {
+    const savedTheme = localStorage.getItem("theme") || "light";
+    document.documentElement.setAttribute("data-theme", savedTheme);
+    themeToggle.textContent = savedTheme === "dark" ? "☀️" : "🌙";
+
+    themeToggle.addEventListener("click", function () {
+      const currentTheme = document.documentElement.getAttribute("data-theme");
+      const newTheme = currentTheme === "light" ? "dark" : "light";
+      document.documentElement.setAttribute("data-theme", newTheme);
+      localStorage.setItem("theme", newTheme);
+      themeToggle.textContent = newTheme === "light" ? "🌙" : "☀️";
+    });
+  }
+
+  taskInput.focus();
 });
 
 // Add new task
@@ -37,7 +55,7 @@ function addTask() {
     completed: false,
   };
 
-  tasks.unshift(task); // Add to beginning
+  tasks.unshift(task);
   taskInput.value = "";
   displayTasks();
   updateTaskCount();
@@ -48,7 +66,7 @@ function addTask() {
 function displayTasks() {
   taskList.innerHTML = "";
 
-  tasks.forEach((task, index) => {
+  tasks.forEach((task) => {
     const li = document.createElement("li");
     li.className = `task-item ${task.completed ? "completed" : ""}`;
     li.innerHTML = `
@@ -102,7 +120,7 @@ function saveTasks() {
   localStorage.setItem("tasks", JSON.stringify(tasks));
 }
 
-// Escape HTML to prevent XSS
+// Escape HTML to prevent XSS - FIXED (removed dark mode from here)
 function escapeHtml(text) {
   const div = document.createElement("div");
   div.textContent = text;
